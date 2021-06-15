@@ -20,5 +20,4 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 
 	boolean existsById(int id);
 	
-	
 }

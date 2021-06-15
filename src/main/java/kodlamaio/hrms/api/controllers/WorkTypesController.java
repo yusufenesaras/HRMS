@@ -8,24 +8,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.hrms.business.abstracts.TalentService;
+import kodlamaio.hrms.business.abstracts.WorkTypeService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.entities.concrete.Talent;
+import kodlamaio.hrms.entities.concrete.WorkType;
 
 @RestController
-@RequestMapping("/api/talent")
+@RequestMapping("/api/worktype")
 @CrossOrigin
-public class TalentsController {
+public class WorkTypesController {
 	
-	private TalentService talentService;
+	private WorkTypeService workTypeService;
 	
 	@Autowired
-	public TalentsController(TalentService talentService) {
-		this.talentService = talentService;
+	public WorkTypesController(WorkTypeService workTypeService) {
+		this.workTypeService = workTypeService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Talent>> getAll(){
-		return this.talentService.getAll();
+	public DataResult<List<WorkType>> getAll(){
+		return this.workTypeService.getAll();
 	}
+	
 }

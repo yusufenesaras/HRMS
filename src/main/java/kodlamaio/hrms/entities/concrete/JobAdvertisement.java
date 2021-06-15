@@ -15,11 +15,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="job_advertisements")
-@Entity
+
 public class JobAdvertisement {
 	
 	@Id
@@ -58,5 +59,14 @@ public class JobAdvertisement {
 	 @ManyToOne
 	 @JoinColumn(name = "employer_id")
 	 private Employer employer;
+	 
+	 @ManyToOne
+	 @JoinColumn(name = "work_hours_id")
+	   private WorkHour workHour;
+	 
+	 @ManyToOne
+	 @JoinColumn(name = "work_types_id")
+	 private WorkType workType;
+	 
 	
 }

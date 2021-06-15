@@ -3,6 +3,7 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,11 +14,12 @@ import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concrete.JobAdvertisement;
+import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
-
+@CrossOrigin
 
 public class JobAdvertisementsController {
 	
@@ -31,19 +33,16 @@ public class JobAdvertisementsController {
 
 	@GetMapping("/getall")
 	public DataResult<List<JobAdvertisement>>  getAll(){
-		
 		return this.jobAdvertisementService.getAll();
 	}
 	
 	@GetMapping("/getallactive")
 	public DataResult<List<JobAdvertisement>>  getAllActive(){
-		
 		return this.jobAdvertisementService.findAllByIsActive();
 	}
 	
 	@GetMapping("/getallactivesorted")
 	public DataResult<List<JobAdvertisement>>  getAllActiveSorted(){
-		
 		return this.jobAdvertisementService.findAllByIsActiveSorted();
 	}
 	
@@ -54,14 +53,12 @@ public class JobAdvertisementsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobAdvertisement jobAdvertisement){
-		
+	public Result add(@RequestBody JobAdvertisementDto jobAdvertisement){
 		return this.jobAdvertisementService.add(jobAdvertisement);
 	}
 	
 	@PostMapping("/jobAdvertisementDisable")
 	public DataResult<JobAdvertisement> setJobAdvertisementDisabled(int id) {
-		
 		return this.jobAdvertisementService.jobAdvertisementDisabled(id);
 	}
 	

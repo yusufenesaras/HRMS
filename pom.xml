@@ -12,7 +12,7 @@
 	<artifactId>hrms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hrms</name>
-	<description>Demo project for Spring Boot</description>
+	<description>HRMS Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -47,7 +47,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+				<dependency>
     <groupId>io.springfox</groupId>
     <artifactId>springfox-swagger2</artifactId>
     <version>2.9.2</version>
@@ -57,7 +57,8 @@
     <artifactId>springfox-swagger-ui</artifactId>
     <version>2.9.2</version>
 </dependency>
-<dependency>
+
+ <dependency>
         <groupId>com.cloudinary</groupId>
         <artifactId>cloudinary-http44</artifactId>
         <version>1.29.0</version>
@@ -68,6 +69,13 @@
         <artifactId>cloudinary-taglib</artifactId>
         <version>1.29.0</version>
     </dependency>
+    
+    <dependency>
+    <groupId>org.modelmapper</groupId>
+    <artifactId>modelmapper</artifactId>
+    <version>2.3.5</version>
+</dependency>
+    
 	</dependencies>
 
 	<build>

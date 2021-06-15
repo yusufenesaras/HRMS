@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 //Varsayılan olarak, tüm statik olmayan, geçici olmayan alanları kullanır, 
-//ancak tür üyelerini @ EqualsAndHashCode ile işaretleyerek hangi alanların kullanıldığını değiştirebilir 
+//ancak tür üyelerini @EqualsAndHashCode ile işaretleyerek hangi alanların kullanıldığını değiştirebilir 
 //(ve hatta çeşitli yöntemlerin çıktısının kullanılacağını belirtebilirsiniz).
 
 @EqualsAndHashCode(callSuper=false) 

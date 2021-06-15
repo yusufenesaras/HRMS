@@ -20,7 +20,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="candidates_cv")
+
 public class CandidateCv {
+	
+	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
+    private List<CandidateSchool> schools;
+	
+	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
+    private List<CandidateTalent> talents;
+	
+	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
+    private List<CandidateJobExperience> jobExperience;
+	
+	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
+    private List<CandidateLanguage> languages;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -40,15 +53,5 @@ public class CandidateCv {
 	private String avatarUrl;
 	
 	
-	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
-    private List<CandidateSchool> schools;
 	
-	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
-    private List<CandidateTalent> talents;
-	
-	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
-    private List<CandidateJobExperience> jobExperience;
-	
-	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
-    private List<CandidateLanguage> languages;
 }

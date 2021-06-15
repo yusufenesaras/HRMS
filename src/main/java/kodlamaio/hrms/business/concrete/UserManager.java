@@ -17,7 +17,7 @@ public class UserManager implements UserService{
 	
 	private UserDao userDao;
 	
-	@Autowired //projeyi tarayıp productDao'ya karşılık gelen sınıfı enjekte ediyor.
+	@Autowired //projeyi tarayıp userDao'ya karşılık gelen sınıfı enjekte ediyor.
 	public UserManager(UserDao userDao) {
 		super();
 		this.userDao = userDao;
