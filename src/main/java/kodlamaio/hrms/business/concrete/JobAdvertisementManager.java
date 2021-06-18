@@ -191,6 +191,12 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		}
 		return new SuccessResult();
 	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getOneJobAds(int id) {
+		return  new SuccessDataResult<List<JobAdvertisement>>
+		(this.jobAdvertisementDao.getOneById(id),"İş İlani Detayı Geldi");
+	}
 	
 	
 	

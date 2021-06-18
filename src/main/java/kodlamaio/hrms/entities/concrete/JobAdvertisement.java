@@ -30,8 +30,10 @@ public class JobAdvertisement {
 	
 	@Column(name="description")
 	private String description;
+	
 	@Column(name="quota")
 	private int quota;
+	
 	//appeal_expiration_date
 	@Column(name="appeal_expiration_date")
 	private LocalDateTime appealExpirationDate;
@@ -51,7 +53,7 @@ public class JobAdvertisement {
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
-	 
+	
 	@ManyToOne
 	@JoinColumn(name = "job_title_id")
      private JobTitle jobtitle;

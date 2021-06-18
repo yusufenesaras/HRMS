@@ -25,13 +25,10 @@ public class CandidateCv {
 	
 	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
     private List<CandidateSchool> schools;
-	
 	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
     private List<CandidateTalent> talents;
-	
 	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
     private List<CandidateJobExperience> jobExperience;
-	
 	@OneToMany(mappedBy = "candidateCv", fetch = FetchType.LAZY)
     private List<CandidateLanguage> languages;
 	
@@ -39,19 +36,23 @@ public class CandidateCv {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	
 	@Column(name="candidate_id")
 	private int candidateId;
+	
 	@Column(name="linkedin_address")
 	private String linkedinAddress;
+	
 	@Column(name="github_address")
 	private String githubAddress;
+	
 	@Column(name="cover_letter")
 	private String coverLetter;
+	
 	@Column(name="is_active")
 	private boolean isActive;
+	
 	@Column(name="avatar_url")
 	private String avatarUrl;
-	
-	
 	
 }

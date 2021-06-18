@@ -22,4 +22,6 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> findAllByIsActiveAndCompanyName(int id);
 	
 	DataResult<JobAdvertisement> jobAdvertisementDisabled(int id);
+	
+	DataResult<List<JobAdvertisement>> getOneJobAds(int id);
 }

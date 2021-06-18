@@ -8,6 +8,7 @@ import kodlamaio.hrms.entities.concrete.CandidateCv;
 
 public interface CandidateCvDao extends JpaRepository<CandidateCv, Integer>{
 	
+	boolean existsById(int id);
 	List<CandidateCv> findByCandidateId(int id);
 	
 }

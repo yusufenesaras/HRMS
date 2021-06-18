@@ -11,6 +11,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/api/verification")
+
 public class EmailVerificationsController {
 	
 	private VerificationCodeService verificationCodeService;
