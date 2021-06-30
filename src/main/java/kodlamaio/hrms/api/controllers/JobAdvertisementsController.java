@@ -84,5 +84,10 @@ public class JobAdvertisementsController {
 	public DataResult<List<JobAdvertisement>> getConfirmedJobAdvertisements() {
 		return this.jobAdvertisementService.getConfirmedJobAdvertisements();
 	}
+	//onaylama
+	@PostMapping("/changeactivestatus")
+	public Result changeIsActiveByCandidate(@RequestParam int id) {
+		return this.jobAdvertisementService.changeIsActiveByCandidate(id);
+	}
 	
 }

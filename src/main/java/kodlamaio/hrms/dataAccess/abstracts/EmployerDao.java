@@ -10,4 +10,5 @@ public interface EmployerDao extends JpaRepository<Employer, Integer>{
 	
 	List<Employer> findAllByEmail(String email);
 	boolean existsById(int id);
+	Employer getById(int id);	
 }

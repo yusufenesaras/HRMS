@@ -36,5 +36,6 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 	Page<JobAdvertisement> findAll(Specification<JobAdvertisement> spec1, Pageable pageable);
 	List<JobAdvertisement> getOneById(int id);
 	
+	JobAdvertisement findById(int id);
 	
 }

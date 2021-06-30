@@ -11,4 +11,6 @@ public interface EmployerService {
 	DataResult<Employer> add(Employer employer);
 	DataResult<List<Employer>>getAll();
 	Result update(Employer employer);
+	DataResult<Employer> getByIdForAdmins(int id);
+	Result changeIsVerifiedByCandidate(int employerId);
 }

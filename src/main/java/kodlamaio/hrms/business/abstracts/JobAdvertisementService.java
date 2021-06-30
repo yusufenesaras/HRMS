@@ -15,6 +15,8 @@ public interface JobAdvertisementService {
 	Result update(JobAdvertisement jobAdvertisement);
 	Result delete(JobAdvertisement jobAdvertisement);
 	
+	Result changeIsActiveByCandidate(int jobAdvertId);
+	
 	DataResult<List<JobAdvertisement>> getAll();
 	
 	DataResult<List<JobAdvertisement>> findAllByIsActive();
@@ -32,4 +34,5 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getOneJobAds(int id);
 	
 	DataResult<Page<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize);
+	
 }

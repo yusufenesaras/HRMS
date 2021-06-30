@@ -34,6 +34,8 @@ public class Employer extends User{
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+	@Column(name = "is_verified", columnDefinition = "boolean default true")
+	private boolean isVerified = true;
 
 	@OneToMany(mappedBy = "employer")
 	private List<JobAdvertisement> jobAdvertisement;

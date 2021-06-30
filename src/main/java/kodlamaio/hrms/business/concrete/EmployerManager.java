@@ -126,5 +126,19 @@ public class EmployerManager implements EmployerService{
 	      return new SuccessResult("Employer güncellendi.");
 	}
 
+	@Override
+	public DataResult<Employer> getByIdForAdmins(int id) {
+		return new SuccessDataResult<Employer>
+		(this.employerDao.getById(id));
+	}
+
+	@Override
+	public Result changeIsVerifiedByCandidate(int employerId) {
+		Employer employer = this.employerDao.getById(employerId);
+		employer.setVerified(!employer.isVerified());
+		this.employerDao.save(employer);
+		return new SuccessResult("Şirketin Doğrulanma durumu değiştirildi");
+	}
+
 	
 }

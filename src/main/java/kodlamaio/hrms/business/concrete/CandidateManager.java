@@ -151,5 +151,14 @@ public class CandidateManager implements CandidateService{
 	      return new SuccessResult("Candidate güncellendi.");
 	}
 
+
+	@Override
+	public DataResult<Candidate> getById(int id) {
+		
+		return new SuccessDataResult<Candidate>
+		(this.candidateDao.getOne(id));
+
+	}
+
 	
 }

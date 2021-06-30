@@ -220,5 +220,13 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		(this.jobAdvertisementDao.getWaitingJobAdvertisements(),"Bekleyen İş İlanlari Listelendi");
 	}
 
+	@Override
+	public Result changeIsActiveByCandidate(int jobAdvertId) {
+		JobAdvertisement jobAdvertIsActiveCandidate = this.jobAdvertisementDao.findById(jobAdvertId);
+		jobAdvertIsActiveCandidate.setActive(!jobAdvertIsActiveCandidate.isActive());
+		this.jobAdvertisementDao.save(jobAdvertIsActiveCandidate);
+		return new SuccessResult("İş ilanının admin tarafından aktifliği değiştirildi");
+	}
+
 
 }

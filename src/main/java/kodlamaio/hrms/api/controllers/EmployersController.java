@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.EmployerService;
@@ -45,6 +46,16 @@ public class EmployersController {
 	@PostMapping("/update")
 	public ResponseEntity<?> update(@Valid @RequestBody Employer employer){
 		return ResponseEntity.ok(this.employerService.update(employer));
+	}
+	
+	@GetMapping("/getByIdForAdmins")
+	public DataResult<Employer> getByIdForAdmins(int id){
+		 return this.employerService.getByIdForAdmins(id);
+	}
+	
+	@PostMapping("/changeverifiedstatus")
+	public Result changeIsVerifiedByCandidate(@RequestParam int id) {
+		return this.employerService.changeIsVerifiedByCandidate(id);
 	}
 	
 }
