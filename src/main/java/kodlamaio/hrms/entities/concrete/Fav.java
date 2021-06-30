@@ -9,34 +9,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name="candidates_talent")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "favs")
 
-public class CandidateTalent {
-	
+public class Fav {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-    @ManyToOne(targetEntity = CandidateCv.class)
-    @JoinColumn(name="candidates_cv_id")
-    @JsonIgnore
-    private CandidateCv candidateCv;
-	
+	@ManyToOne
+	@JoinColumn(name = "job_advertisement_id")
+	private JobAdvertisement jobAdvertisement;
 	
 	@ManyToOne
-	@JoinColumn(name = "talents_id")
-	private Talent talent;
+	@JoinColumn(name = "candidate_id")
+	private Candidate candidate;
 }

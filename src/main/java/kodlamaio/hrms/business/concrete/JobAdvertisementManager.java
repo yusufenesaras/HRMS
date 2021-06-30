@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import kodlamaio.hrms.core.utilities.dtoTransfer.DtoService;
 import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
@@ -94,7 +96,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	public DataResult<List<JobAdvertisement>> findAllByIsActiveAndCompanyName(int id) {
 		
 		if(!this.employerDao.existsById(id)) {
-			return new ErrorDataResult("İş veren bulunamadı.");
+			return new ErrorDataResult<List<JobAdvertisement>>("İş veren bulunamadı.");
 		}
 		else {
 			return new SuccessDataResult <List<JobAdvertisement>>
@@ -106,7 +108,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	public DataResult<JobAdvertisement> jobAdvertisementDisabled(int id) {
 		
 		if(!this.jobAdvertisementDao.existsById(id)) {
-			return new ErrorDataResult("İş veren bulunamadı.");
+			return new ErrorDataResult<JobAdvertisement>("İş veren bulunamadı.");
 		}
 		JobAdvertisement ref =  this.jobAdvertisementDao.getOne(id);
 		ref.setActive(false);
@@ -197,7 +199,26 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		return  new SuccessDataResult<List<JobAdvertisement>>
 		(this.jobAdvertisementDao.getOneById(id),"İş İlani Detayı Geldi");
 	}
-	
-	
-	
+
+	@Override
+	public DataResult<Page<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize) {
+		
+		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+		return new SuccessDataResult<Page<JobAdvertisement>>
+		(this.jobAdvertisementDao.getConfirmedJobAdvertisements(pageable));
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getConfirmedJobAdvertisements() {
+		return new SuccessDataResult<List<JobAdvertisement>>
+		(this.jobAdvertisementDao.getConfirmedJobAdvertisements(),"Onaylanmış İş İlanlari Listelendi");
+	}
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getWaitingJobAdvertisements() {
+		return new SuccessDataResult<List<JobAdvertisement>>
+		(this.jobAdvertisementDao.getWaitingJobAdvertisements(),"Bekleyen İş İlanlari Listelendi");
+	}
+
+
 }

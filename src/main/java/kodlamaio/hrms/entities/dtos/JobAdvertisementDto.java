@@ -34,6 +34,7 @@ public class JobAdvertisementDto {
 	private Double maxSalary;
 	
 	private boolean isActive;
+	private boolean isConfirmed;
 	
 	private int workHourId;
 	private int workTypeId;

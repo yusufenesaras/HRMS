@@ -41,14 +41,17 @@ public class CandidateJobExperience {
 	@ManyToOne
 	@JoinColumn(name = "job_titles_id")
 	private JobTitle jobtitle;
-	
-	@Column(name="is_continue")
-	private boolean isContinue;
-	
+	 
 	@JsonProperty(access = Access.WRITE_ONLY)
     @ManyToOne()
     @JoinColumn(name="candidates_cv_id")
     private CandidateCv candidateCv;
+	
+	@Column(name="is_continue")
+	private boolean isContinue;
+	
+	@Column(name="job_detail")
+	private String jobDetail;
 	
 	
 }

@@ -2,6 +2,9 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,5 +40,10 @@ public class CandidatesController {
 	public DataResult<Candidate> add(@RequestBody Candidate candidate){
 		return this.candidateService.add(candidate);
 		
+	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<?> update(@Valid @RequestBody Candidate candidate){
+		return ResponseEntity.ok(this.candidateService.update(candidate));
 	}
 }

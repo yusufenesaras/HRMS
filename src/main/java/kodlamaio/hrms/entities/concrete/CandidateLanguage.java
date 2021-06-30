@@ -34,9 +34,11 @@ public class CandidateLanguage {
     @ManyToOne(targetEntity = CandidateCv.class)
     @JoinColumn(name="candidates_cv_id")
     private CandidateCv candidateCv;
-
 	
+
     @ManyToOne(targetEntity = Language.class)
     @JoinColumn(name="languages_id")
-	 private Language language;
+	private Language language;
+    @Column(name="level")
+    private int level;
 }

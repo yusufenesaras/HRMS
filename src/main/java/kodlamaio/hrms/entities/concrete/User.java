@@ -12,6 +12,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,6 +37,7 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
     private List<SystemUser> systemUser;
 	

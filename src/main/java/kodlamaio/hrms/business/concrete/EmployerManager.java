@@ -119,5 +119,12 @@ public class EmployerManager implements EmployerService{
 		
 	}
 
+	@Override
+	public Result update(Employer employer) {
+		
+		this.employerDao.save(employer);
+	      return new SuccessResult("Employer güncellendi.");
+	}
+
 	
 }

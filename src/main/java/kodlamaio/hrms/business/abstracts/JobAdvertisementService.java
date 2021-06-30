@@ -2,6 +2,8 @@ package kodlamaio.hrms.business.abstracts;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concrete.JobAdvertisement;
@@ -23,5 +25,11 @@ public interface JobAdvertisementService {
 	
 	DataResult<JobAdvertisement> jobAdvertisementDisabled(int id);
 	
+	DataResult<List<JobAdvertisement>> getConfirmedJobAdvertisements();
+	
+	DataResult<List<JobAdvertisement>> getWaitingJobAdvertisements();
+	
 	DataResult<List<JobAdvertisement>> getOneJobAds(int id);
+	
+	DataResult<Page<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize);
 }

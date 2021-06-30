@@ -28,4 +28,5 @@ public class TalentsController {
 	public DataResult<List<Talent>> getAll(){
 		return this.talentService.getAll();
 	}
+	
 }

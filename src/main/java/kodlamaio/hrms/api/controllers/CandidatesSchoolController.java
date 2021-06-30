@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.CandidateSchoolService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.entities.concrete.CandidateLanguage;
 import kodlamaio.hrms.entities.concrete.CandidateSchool;
+import kodlamaio.hrms.entities.dtos.CandidateSchoolDto;
 
 @RestController
 @RequestMapping("/api/candidateschools")
 @CrossOrigin
 public class CandidatesSchoolController {
-
-
+		
 private CandidateSchoolService candidateSchoolService;
 	
 	@Autowired
@@ -30,16 +32,27 @@ private CandidateSchoolService candidateSchoolService;
 	
 	@GetMapping("/findbycandidatecvid")
 	public DataResult<List<CandidateSchool>> findByCandidateId(@RequestParam int id) {
-		// TODO Auto-generated method stub
+		
 		return this.candidateSchoolService.findByCandidateId(id);
+	}
+	@GetMapping("/getbyid")
+	public DataResult<List<CandidateSchool>> getbyid(@RequestParam int id) {
+		
+		return this.candidateSchoolService.getBySchoolId(id);
 	}
 	
 	@PostMapping("/update")
-	public DataResult<CandidateSchool> update(@RequestBody CandidateSchool candidateSchool) {
-		// TODO Auto-generated method stub
+	public Result update(@RequestBody CandidateSchoolDto candidateSchool) {
+		
 		return this.candidateSchoolService.updateSchool(candidateSchool);
 	}
 
+	@PostMapping("/add")
+	public Result add(@RequestBody CandidateSchoolDto school) {
+		
+		return this.candidateSchoolService.add(school);
+	}
+	
 	
 	@GetMapping("/getall")
 	public DataResult<List<CandidateSchool>> getAll(){
@@ -50,4 +63,5 @@ private CandidateSchoolService candidateSchoolService;
 	public DataResult<List<CandidateSchool>> orderedCandidateCvSchools(@RequestParam int id){
 		return this.candidateSchoolService.orderedCandidateCvSchools(id);
 	}
+	
 }

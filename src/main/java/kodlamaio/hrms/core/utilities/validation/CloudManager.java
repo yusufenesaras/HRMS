@@ -1,7 +1,6 @@
 package kodlamaio.hrms.core.utilities.validation;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
@@ -19,7 +18,6 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 
-import com.cloudinary.*;
 
 @Service
 public class CloudManager implements CloudImageService{
@@ -33,6 +31,7 @@ public class CloudManager implements CloudImageService{
 				"api_secret", "7I1L5_L7xsE5gPvsldLmVp597l4")); 
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public DataResult<Map> upload(MultipartFile multipartFile) throws IOException {
 		
@@ -51,6 +50,7 @@ public class CloudManager implements CloudImageService{
 		return new SuccessDataResult<>(uploader);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public DataResult<Map> delete(String id) throws IOException {
 		

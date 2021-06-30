@@ -9,7 +9,9 @@ import kodlamaio.hrms.core.utilities.results.DataResult;
 
 public interface CloudImageService {
 	
+	@SuppressWarnings("rawtypes")
 	DataResult<Map> upload(MultipartFile multipartFile) throws IOException;
+	@SuppressWarnings("rawtypes")
 	DataResult<Map> delete(String id) throws IOException;
 	
 }

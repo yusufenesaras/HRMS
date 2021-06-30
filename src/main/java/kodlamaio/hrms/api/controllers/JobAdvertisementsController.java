@@ -3,13 +3,15 @@ package kodlamaio.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
@@ -66,6 +68,21 @@ public class JobAdvertisementsController {
 	@GetMapping("/getOneById")
 	public DataResult<List<JobAdvertisement>> getOneById(@RequestParam int id) {
 		return this.jobAdvertisementService.getOneJobAds(id);
+	}
+	
+	@GetMapping("/getConfirmedJobAdsWithPageable")
+    public DataResult<Page<JobAdvertisement>> getConfirmedJobAdsWithPageable(@RequestParam int pageNo, @RequestParam int pageSize) {
+        return this.jobAdvertisementService.getConfirmedJobAdvertisementsWithPageable(pageNo,pageSize);
+	}
+	
+	@GetMapping("/getWaitingJobAds")
+	public DataResult<List<JobAdvertisement>> getWaitingJobAdvertisements() {
+		return this.jobAdvertisementService.getWaitingJobAdvertisements();
+	}
+	
+	@GetMapping("/getConfirmedJobAds")
+	public DataResult<List<JobAdvertisement>> getConfirmedJobAdvertisements() {
+		return this.jobAdvertisementService.getConfirmedJobAdvertisements();
 	}
 	
 }
