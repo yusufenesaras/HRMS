@@ -38,11 +38,9 @@ public class CandidateSchool {
 	@Column(name="department")
 	private String department;
 	
-	
     @ManyToOne(targetEntity = CandidateCv.class)
     @JoinColumn(name="candidates_cv_id")
     private CandidateCv candidateCv;
-	
 	
 	@Column(name="is_continue")
 	private boolean isContinue;

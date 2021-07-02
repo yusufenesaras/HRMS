@@ -90,4 +90,10 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.changeIsActiveByCandidate(id);
 	}
 	
+	@PostMapping("/getEmployersActiveJobAdvertisement")
+	public Result getEmployersActiveJobAdvertisement(@RequestParam int id) {
+		return this.jobAdvertisementService.getEmployersActiveJobAdvertisement(id);
+	}
+	
+	
 }

@@ -80,6 +80,7 @@ public class CandidateSchoolManager implements CandidateSchoolService{
 				"İş arayanın okul bilgileri listelendi");
 	}
 
+	
 	@Override
 	public Result updateSchool(CandidateSchoolDto candidateSchool) {
 		
@@ -122,6 +123,13 @@ public class CandidateSchoolManager implements CandidateSchoolService{
 	public DataResult<List<CandidateSchool>> findByCandidateCvId(int id) {
 		 return new SuccessDataResult<List<CandidateSchool>>
 	        (this.CandidateSchoolDao.findByCandidateCvId(id),"Başarılı");
+	}
+
+	@Override
+	public Result delete(int id) {
+		
+		this.CandidateSchoolDao.deleteById(id);
+		return new SuccessResult("Okul silindi.");
 	}
 
 }

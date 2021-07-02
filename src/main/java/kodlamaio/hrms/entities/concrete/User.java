@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,25 +22,24 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","systemUser"})
 
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="email_address")
+
+	@Column(name = "email_address")
 	private String email;
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "user")
-    private List<SystemUser> systemUser;
+	private List<SystemUser> systemUser;
 	
 	
 }

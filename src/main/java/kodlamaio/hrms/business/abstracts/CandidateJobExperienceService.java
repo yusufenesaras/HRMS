@@ -15,6 +15,7 @@ public interface CandidateJobExperienceService {
 	DataResult<List<CandidateJobExperience>> orderedCandidateCvJobExperience(int id);
 	Result add(CandidateJobExperienceDto jobExp);
 	Result update(CandidateJobExperienceDto jobExp);
+	Result delete(int id);
 	DataResult<List<CandidateJobExperience>> findByCandidateCvId(int id);
-
+	
 }

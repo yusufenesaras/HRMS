@@ -17,23 +17,20 @@ import kodlamaio.hrms.dataAccess.abstracts.CandidateLanguageDao;
 import kodlamaio.hrms.dataAccess.abstracts.LanguageDao;
 import kodlamaio.hrms.entities.concrete.CandidateLanguage;
 import kodlamaio.hrms.entities.concrete.CandidateSchool;
-import kodlamaio.hrms.entities.concrete.Language;
 import kodlamaio.hrms.entities.dtos.CandidateLanguageDto;
+import kodlamaio.hrms.entities.dtos.CandidateSchoolDto;
 
 @Service
 public class CandidateLanguageManager implements CandidateLanguageService{
 	
 	private CandidateLanguageDao candidateLanguageDao;
 	private DtoService dtoService;
-	private LanguageDao languageDao;
 	
 	@Autowired
-	public CandidateLanguageManager(CandidateLanguageDao candidateLanguageDao,DtoService dtoService,
-			LanguageDao languageDao) {
+	public CandidateLanguageManager(CandidateLanguageDao candidateLanguageDao,DtoService dtoService) {
 		super();
 		this.candidateLanguageDao = candidateLanguageDao;
 		this.dtoService = dtoService;
-		this.languageDao = languageDao;
 	}
 	
 	@Override
@@ -54,20 +51,37 @@ public class CandidateLanguageManager implements CandidateLanguageService{
 	}
 
 	@Override
-	public Result update(int cvId, int langId, int level) {
-		
-		CandidateLanguage ref = this.candidateLanguageDao.getByCandidateCvIdAndLanguageId(cvId,langId);
-		ref.setLevel(level);
-		this.candidateLanguageDao.save(ref);
-		return new SuccessResult(""+ref.getLevel());
-	}
-
-	@Override
 	public DataResult<List<CandidateLanguage>> findByCandidateCvId(int id) {
 		
 		return new SuccessDataResult<List<CandidateLanguage>>
 		(this.candidateLanguageDao.findByCandidateCvId(id),"Başarılı");
 	}
+
+
+	@Override
+	public Result delete(int id) {
+		this.candidateLanguageDao.deleteById(id);
+		return new SuccessResult("Dil silidni.");
+	}
+
+	@Override
+	public Result updateLang(CandidateLanguageDto lang) {
+		
+	CandidateLanguage ref =  this.candidateLanguageDao.findById(lang.getId());
+	/*
+	ref.setCandidateCv(lang.getCandidateCvId());
+	ref.setLanguage(lang.getLanguageId()); */
+	ref.setLevel(lang.getLevel());
+	ref.setLanguagesName(lang.getLanguagesName());
+	
+	 this.candidateLanguageDao.save((CandidateLanguage)
+			 dtoService.dtoClassConverter(ref, CandidateLanguage.class));
+	
+	return new SuccessResult("başarılı");	
+	
+	}
+	
+	
 
 	
 }

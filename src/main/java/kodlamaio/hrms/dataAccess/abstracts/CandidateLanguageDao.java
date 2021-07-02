@@ -19,4 +19,8 @@ public interface CandidateLanguageDao extends JpaRepository<CandidateLanguage, I
 	CandidateLanguage getByCvId(int cvId);
 	
 	List<CandidateLanguage> findByCandidateCvId(int id);
+	
+	CandidateLanguage getById(int id);
+	CandidateLanguage findById(int id);
+
 }

@@ -13,4 +13,5 @@ public class CandidateTalentDto {
 	private int id;
 	private int talentId;
 	private int cvId;
+	private String talentName;
 }

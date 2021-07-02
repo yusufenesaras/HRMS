@@ -35,9 +35,10 @@ public class JobAdvertisement {
 	
 	@Column(name="description")
 	private String description;
+	
 	@Column(name="quota")
 	private int quota;
-	//appeal_expiration_date
+
 	@Column(name="appeal_expiration_date")
 	private LocalDateTime appealExpirationDate;
 	

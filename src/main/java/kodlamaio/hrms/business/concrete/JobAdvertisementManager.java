@@ -228,5 +228,12 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		return new SuccessResult("İş ilanının admin tarafından aktifliği değiştirildi");
 	}
 
+	@Override
+	public DataResult<List<JobAdvertisement>> getEmployersActiveJobAdvertisement(int id) {
+		
+		return new SuccessDataResult<List<JobAdvertisement>>
+		(this.jobAdvertisementDao.getEmployersActiveJobAdvertisement(id));
+	}
+
 
 }

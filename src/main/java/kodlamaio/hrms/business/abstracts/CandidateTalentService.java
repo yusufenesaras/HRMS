@@ -11,6 +11,9 @@ public interface CandidateTalentService {
 	
 	DataResult<List<CandidateTalent>> getAll();
 	Result add(CandidateTalentDto talent);
+	Result delete(int id);
+	Result updateTalent(CandidateTalentDto candidateTalent);
 	DataResult<List<CandidateTalent>> findByCandidateCvId(int id);
-
+	
+	
 }

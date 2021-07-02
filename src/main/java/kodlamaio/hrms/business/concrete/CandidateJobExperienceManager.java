@@ -100,6 +100,13 @@ public class CandidateJobExperienceManager implements CandidateJobExperienceServ
         (this.candidateJobExperienceDao.findByCandidateCvId(id),"Başarılı");
 
 	}
+
+	@Override
+	public Result delete(int id) {
+		
+		this.candidateJobExperienceDao.deleteById(id);
+		return new SuccessResult("Silindi.");
+	}
 	
 	
 }

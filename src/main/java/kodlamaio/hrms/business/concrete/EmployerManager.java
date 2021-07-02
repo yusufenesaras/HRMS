@@ -83,9 +83,9 @@ public class EmployerManager implements EmployerService{
 	     if(!matcher.matches()) {
 	    	 return new ErrorResult("Geçersiz Email Adresi");
 	     }
-	     else if(!employer.getEmail().contains(employer.getWebAdress())) {
+	    else if(!employer.getEmail().contains(employer.getWebAdress())) {
 	    	 return new ErrorResult("Domain adresi girmek zorundasınız"); 
-	     }
+	     } 
 	 	return new SuccessResult();
 	     
 	}

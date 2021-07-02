@@ -30,6 +30,9 @@ public class CandidateLanguage {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="lang_name")
+	private String languagesName;
+	
 	@JsonProperty(access = Access.WRITE_ONLY)
     @ManyToOne(targetEntity = CandidateCv.class)
     @JoinColumn(name="candidates_cv_id")

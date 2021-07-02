@@ -68,11 +68,11 @@ private CandidateCvService candidateCvService;
 		return this.candidateCvService.updateCoverLetter(text, cvId);
 	}
 	
-	/*
+	
 	@PostMapping("/update")
 	public ResponseEntity<?> update(@Valid @RequestBody CandidateCv candidateCv){
 		return ResponseEntity.ok(this.candidateCvService.update(candidateCv));
 	}
-	*/
+	
 
 }

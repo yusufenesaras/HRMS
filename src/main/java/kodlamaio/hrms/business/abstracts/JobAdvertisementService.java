@@ -35,4 +35,6 @@ public interface JobAdvertisementService {
 	
 	DataResult<Page<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize);
 	
+	DataResult<List<JobAdvertisement>> getEmployersActiveJobAdvertisement(int id);
+
 }

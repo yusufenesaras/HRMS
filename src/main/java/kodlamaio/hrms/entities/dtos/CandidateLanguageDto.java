@@ -14,4 +14,5 @@ public class CandidateLanguageDto {
 	private int candidateCvId;
 	private int languageId;
 	private int level;
+	private String languagesName;
 }

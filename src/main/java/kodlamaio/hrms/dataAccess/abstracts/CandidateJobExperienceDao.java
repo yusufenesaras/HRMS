@@ -20,4 +20,5 @@ public interface CandidateJobExperienceDao extends JpaRepository<CandidateJobExp
 	CandidateJobExperience findById(int id);
 	
 	List<CandidateJobExperience> findByCandidateCvId(int id);
+	
 }

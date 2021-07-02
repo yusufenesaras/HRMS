@@ -2,7 +2,10 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +20,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concrete.CandidateLanguage;
 import kodlamaio.hrms.entities.concrete.CandidateSchool;
 import kodlamaio.hrms.entities.dtos.CandidateLanguageDto;
+import kodlamaio.hrms.entities.dtos.CandidateSchoolDto;
 
 @RestController
 @RequestMapping("api/candidatelanguages")
@@ -42,16 +46,21 @@ private CandidateLanguageService candidateLanguageService;
 		return this.candidateLanguageService.add(lang);
 	}
 	
-	@PostMapping("/updateLevel")
-	public Result add(@RequestParam int cvId, @RequestParam int langId, @RequestParam int level) {
-		
-		return this.candidateLanguageService.update(cvId,langId,level);
+	@PostMapping("delete")
+	public Result delete (@RequestParam("id") int id) {
+		return this.candidateLanguageService.delete(id);
 	}
 	
 	@GetMapping("/findByCandidateCvId")
 	public DataResult<List<CandidateLanguage>> findByCandidateId(@RequestParam int id) {
 		
 		return this.candidateLanguageService.findByCandidateCvId(id);
+	}
+	
+	@PostMapping("/update")
+	public Result update(@RequestBody CandidateLanguageDto lang) {
+		
+		return this.candidateLanguageService.updateLang(lang);
 	}
 	
 }

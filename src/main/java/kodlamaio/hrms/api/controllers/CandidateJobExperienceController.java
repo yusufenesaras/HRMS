@@ -51,6 +51,11 @@ private CandidateJobExperienceService candidateJobExperienceService;
 		return this.candidateJobExperienceService.add(jobexp);
 	}
 	
+	@PostMapping("delete")
+	 public Result delete(@RequestParam("id") int id) {
+		 return this.candidateJobExperienceService.delete(id);
+	 }
+	
 	@GetMapping("/getcandidateJobExperiencesswithordered")
 	public DataResult<List<CandidateJobExperience>> orderedCandidateCvSchools(@RequestParam int id){
 		return this.candidateJobExperienceService.orderedCandidateCvJobExperience(id);

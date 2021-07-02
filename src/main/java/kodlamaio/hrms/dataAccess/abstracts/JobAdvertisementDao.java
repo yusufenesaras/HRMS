@@ -38,4 +38,5 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Int
 	
 	JobAdvertisement findById(int id);
 	
+	
 }

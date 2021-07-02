@@ -30,13 +30,17 @@ public class CandidateTalent {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="talent_name")
+	private String talentName;
+	
     @ManyToOne(targetEntity = CandidateCv.class)
     @JoinColumn(name="candidates_cv_id")
     @JsonIgnore
     private CandidateCv candidateCv;
-	
-	
+    
 	@ManyToOne
 	@JoinColumn(name = "talents_id")
 	private Talent talent;
+	
+	
 }

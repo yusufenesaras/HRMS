@@ -13,6 +13,7 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CandidateTalentDao;
+import kodlamaio.hrms.entities.concrete.CandidateLanguage;
 import kodlamaio.hrms.entities.concrete.CandidateTalent;
 import kodlamaio.hrms.entities.dtos.CandidateTalentDto;
 
@@ -58,5 +59,27 @@ public class CandidateTalentManager implements CandidateTalentService{
         (this.candidateTalentDao.findByCandidateCvId(id),"Başarılı");
 
 	}
+
+	@Override
+	public Result delete(int id) {
+		this.candidateTalentDao.deleteById(id);
+		return new SuccessResult("Talent Silindi.");
+	}
+
+
+	@Override
+	public Result updateTalent(CandidateTalentDto candidateTalent) {
+		
+		CandidateTalent ref = this.candidateTalentDao.findById(candidateTalent.getId());
+		
+		ref.setId(candidateTalent.getId());
+		ref.setTalentName(candidateTalent.getTalentName());
+		
+		 this.candidateTalentDao.save((CandidateTalent)
+				 dtoService.dtoClassConverter(ref, CandidateTalent.class));
+		
+		return new SuccessResult("başarılı");	
+	} 
+
 
 }

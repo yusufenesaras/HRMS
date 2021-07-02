@@ -15,28 +15,30 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@EqualsAndHashCode(callSuper=false) 
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
-@Table(name = "employers")
-@AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisement"})
-
+@AllArgsConstructor
+@Table(name = "employers")
 
 public class Employer extends User{
 	
-	@Column(name="company_name")
+	@Column(name = "company_name")
 	private String companyName;
-	@Column(name="web_address")
+
+	@Column(name = "web_address")
 	private String webAdress;
-	
-	@Column(name="phone_number")
+
+	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	@Column(name = "is_verified", columnDefinition = "boolean default true")
-	private boolean isVerified = true;
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "employer")
 	private List<JobAdvertisement> jobAdvertisement;
+	
+	@Column(name = "is_verified", columnDefinition = "boolean default true")
+	private boolean isVerified = false; 
+	
+	
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.CandidateSchoolService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concrete.CandidateLanguage;
 import kodlamaio.hrms.entities.concrete.CandidateSchool;
 import kodlamaio.hrms.entities.dtos.CandidateSchoolDto;
 
@@ -43,7 +42,6 @@ private CandidateSchoolService candidateSchoolService;
 	
 	@PostMapping("/update")
 	public Result update(@RequestBody CandidateSchoolDto candidateSchool) {
-		
 		return this.candidateSchoolService.updateSchool(candidateSchool);
 	}
 
@@ -62,6 +60,11 @@ private CandidateSchoolService candidateSchoolService;
 	@GetMapping("/getcandidateschoolswithordered")
 	public DataResult<List<CandidateSchool>> orderedCandidateCvSchools(@RequestParam int id){
 		return this.candidateSchoolService.orderedCandidateCvSchools(id);
+	}
+	
+	@PostMapping("delete")
+	public Result delete(@RequestParam int id) {
+		return this.candidateSchoolService.delete(id);
 	}
 	
 }
