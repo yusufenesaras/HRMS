@@ -33,7 +33,7 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisement>> getOneJobAds(int id);
 	
-	DataResult<Page<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize);
+	DataResult<List<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize);
 	
 	DataResult<List<JobAdvertisement>> getEmployersActiveJobAdvertisement(int id);
 

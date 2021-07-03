@@ -18,5 +18,5 @@ public interface CandidateCvService {
 	DataResult<List<CandidateCv>> findByCandidateId(int id);
 	Result uploadCvPhoto(int candidateCvId, MultipartFile multipartFile) throws IOException;
 	Result updateCoverLetter(String text,int cvId);
-	Result update(CandidateCv candidateCv);
+	Result update(CandidateCvDto candidateCv);
 }

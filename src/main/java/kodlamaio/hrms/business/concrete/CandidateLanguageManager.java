@@ -68,9 +68,7 @@ public class CandidateLanguageManager implements CandidateLanguageService{
 	public Result updateLang(CandidateLanguageDto lang) {
 		
 	CandidateLanguage ref =  this.candidateLanguageDao.findById(lang.getId());
-	/*
-	ref.setCandidateCv(lang.getCandidateCvId());
-	ref.setLanguage(lang.getLanguageId()); */
+
 	ref.setLevel(lang.getLevel());
 	ref.setLanguagesName(lang.getLanguagesName());
 	

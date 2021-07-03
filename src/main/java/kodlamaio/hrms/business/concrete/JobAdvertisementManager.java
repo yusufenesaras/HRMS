@@ -201,10 +201,10 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
 
 	@Override
-	public DataResult<Page<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize) {
+	public DataResult<List<JobAdvertisement>> getConfirmedJobAdvertisementsWithPageable(int pageNo, int pageSize) {
 		
 		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
-		return new SuccessDataResult<Page<JobAdvertisement>>
+		return new SuccessDataResult<List<JobAdvertisement>>
 		(this.jobAdvertisementDao.getConfirmedJobAdvertisements(pageable));
 	}
 

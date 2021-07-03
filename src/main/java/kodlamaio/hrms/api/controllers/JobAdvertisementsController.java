@@ -43,11 +43,7 @@ public class JobAdvertisementsController {
 	public DataResult<List<JobAdvertisement>>  getAllActive(){
 		return this.jobAdvertisementService.findAllByIsActive();
 	}
-	
-	@GetMapping("/getallactivesorted")
-	public DataResult<List<JobAdvertisement>>  getAllActiveSorted(){
-		return this.jobAdvertisementService.findAllByIsActiveSorted();
-	}
+
 	
 	@GetMapping("/getEmployerJobAdvertisement")
 	public DataResult<List<JobAdvertisement>> findAllByIsActiveAndCompanyName(int id) {
@@ -71,7 +67,7 @@ public class JobAdvertisementsController {
 	}
 	
 	@GetMapping("/getConfirmedJobAdsWithPageable")
-    public DataResult<Page<JobAdvertisement>> getConfirmedJobAdsWithPageable(@RequestParam int pageNo, @RequestParam int pageSize) {
+    public DataResult<List<JobAdvertisement>> getConfirmedJobAdsWithPageable(@RequestParam int pageNo, @RequestParam int pageSize) {
         return this.jobAdvertisementService.getConfirmedJobAdvertisementsWithPageable(pageNo,pageSize);
 	}
 	

@@ -135,10 +135,27 @@ public class CandidateCvManager implements CandidateCvService{
 	}
 
 	@Override
-	public Result update(CandidateCv candidateCv) {
+	public Result update(CandidateCvDto candidateCv) {
+			
+		CandidateCv ref = candidateCvDao.findById(candidateCv.getId());
 		
-		this.candidateCvDao.save(candidateCv);
-	      return new SuccessResult("CandidateCv güncellendi.");
+		if(candidateCv.getAvatarUrl() != null) {
+			ref.setAvatarUrl(candidateCv.getAvatarUrl());
+		}
+		 if(candidateCv.getCoverLetter() != null) {
+			ref.setCoverLetter(candidateCv.getCoverLetter());
+		}
+		 if(candidateCv.getGithubAddress() != null) {
+			ref.setGithubAddress(candidateCv.getGithubAddress());
+		}
+		 if(candidateCv.getLinkedinAddress() != null) {
+			ref.setLinkedinAddress(candidateCv.getLinkedinAddress());
+		}
+		
+		 this.candidateCvDao.save((CandidateCv)
+				 dtoService.dtoClassConverter(ref, CandidateCv.class));
+		
+		return new SuccessResult("Başarılı");
 	}
 
 	

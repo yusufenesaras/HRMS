@@ -6,21 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.UserService;
+import kodlamaio.hrms.core.utilities.dtoTransfer.DtoService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.dataAccess.abstracts.UserDao;
+import kodlamaio.hrms.entities.concrete.CandidateLanguage;
 import kodlamaio.hrms.entities.concrete.User;
+import kodlamaio.hrms.entities.dtos.UserDto;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
 
 
 @Service
 public class UserManager implements UserService{
 	
 	private UserDao userDao;
+	private DtoService dtoService;
 	
 	@Autowired //projeyi tarayıp userDao'ya karşılık gelen sınıfı enjekte ediyor.
-	public UserManager(UserDao userDao) {
+	public UserManager(UserDao userDao, DtoService dtoService) {
 		super();
 		this.userDao = userDao;
+		this.dtoService = dtoService;
 	}
 
 	@Override
@@ -34,6 +41,24 @@ public class UserManager implements UserService{
 	public User add(User user) {
 		
 		return userDao.save(user);
+	}
+
+	@Override
+	public Result update(UserDto user) {
+		User ref =  this.userDao.findById(user.getId());
+
+		ref.setEmail(user.getEmail());
+		ref.setPassword(user.getPassword());
+		
+		this.userDao.save((User) dtoService.dtoClassConverter(user, User.class));
+		return new SuccessResult("Başarılı");
+		
+	}
+
+	@Override
+	public User findById(int id) {
+		
+		return userDao.findById(id);
 	}
 	
 }

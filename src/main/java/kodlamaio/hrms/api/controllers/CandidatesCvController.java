@@ -68,9 +68,9 @@ private CandidateCvService candidateCvService;
 		return this.candidateCvService.updateCoverLetter(text, cvId);
 	}
 	
-	
+	// Dto ile güncelleme eklendi
 	@PostMapping("/update")
-	public ResponseEntity<?> update(@Valid @RequestBody CandidateCv candidateCv){
+	public ResponseEntity<?> update(@Valid @RequestBody CandidateCvDto candidateCv){
 		return ResponseEntity.ok(this.candidateCvService.update(candidateCv));
 	}
 	
