@@ -44,18 +44,6 @@ public class UserManager implements UserService{
 	}
 
 	@Override
-	public Result update(UserDto user) {
-		User ref =  this.userDao.findById(user.getId());
-
-		ref.setEmail(user.getEmail());
-		ref.setPassword(user.getPassword());
-		
-		this.userDao.save((User) dtoService.dtoClassConverter(user, User.class));
-		return new SuccessResult("Başarılı");
-		
-	}
-
-	@Override
 	public User findById(int id) {
 		
 		return userDao.findById(id);

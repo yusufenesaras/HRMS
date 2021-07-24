@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.entities.concrete.Employer;
 import kodlamaio.hrms.entities.concrete.User;
 import kodlamaio.hrms.entities.dtos.CandidateCvDto;
 import kodlamaio.hrms.entities.dtos.CandidateLanguageDto;
@@ -42,9 +43,9 @@ public class UsersController {
 		return this.userService.getAll();
 	}
 	
-	@PostMapping("/update")
-	public Result update(@RequestBody UserDto user){
-		return this.userService.update(user);
+	@GetMapping("/getById")
+	public User findById(int id){
+		 return this.userService.findById(id);
 	}
 	
 }

@@ -25,7 +25,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "candidates")
 //@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisement"})
 public class Candidate extends User{
-	@JsonIgnore
+
 	@Column(name = "first_name")
 	private String firstName;
 	

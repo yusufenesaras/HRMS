@@ -17,6 +17,8 @@ public interface JobAdvertisementService {
 	
 	Result changeIsActiveByCandidate(int jobAdvertId);
 	
+	Result getConfirmedJobAdvertisementsbyAdmin(int id);
+	
 	DataResult<List<JobAdvertisement>> getAll();
 	
 	DataResult<List<JobAdvertisement>> findAllByIsActive();

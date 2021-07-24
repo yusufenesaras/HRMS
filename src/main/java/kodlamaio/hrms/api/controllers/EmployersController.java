@@ -54,9 +54,19 @@ public class EmployersController {
 		 return this.employerService.getByIdForAdmins(id);
 	}
 	
+	@GetMapping("/getByIdForEmployers")
+	public Employer getByIdForEmployers(int id){
+		 return this.employerService.findByEmployerId(id);
+	}
+	
 	@PostMapping("/changeverifiedstatus")
 	public Result changeIsVerifiedByCandidate(@RequestParam int id) {
 		return this.employerService.changeIsVerifiedByCandidate(id);
 	}
+	@GetMapping("/getAllByVerify")
+	public DataResult<List<Employer>> getAllByVerify() {
+		return this.employerService.getAllByVerify();
+	}
+	
 	
 }

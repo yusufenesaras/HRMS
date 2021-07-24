@@ -206,6 +206,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
 		return new SuccessDataResult<List<JobAdvertisement>>
 		(this.jobAdvertisementDao.getConfirmedJobAdvertisements(pageable));
+		
 	}
 
 	@Override
@@ -225,7 +226,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		JobAdvertisement jobAdvertIsActiveCandidate = this.jobAdvertisementDao.findById(jobAdvertId);
 		jobAdvertIsActiveCandidate.setActive(!jobAdvertIsActiveCandidate.isActive());
 		this.jobAdvertisementDao.save(jobAdvertIsActiveCandidate);
-		return new SuccessResult("İş ilanının admin tarafından aktifliği değiştirildi");
+		return new SuccessResult("İş ilanının employer tarafından aktifliği değiştirildi");
 	}
 
 	@Override
@@ -233,6 +234,15 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		
 		return new SuccessDataResult<List<JobAdvertisement>>
 		(this.jobAdvertisementDao.getEmployersActiveJobAdvertisement(id));
+	}
+
+	@Override
+	public Result getConfirmedJobAdvertisementsbyAdmin(int id) {
+		
+		JobAdvertisement jobAdvertIsActiveAdmin = this.jobAdvertisementDao.findById(id);
+		jobAdvertIsActiveAdmin.setConfirmed(!jobAdvertIsActiveAdmin.isConfirmed());
+		this.jobAdvertisementDao.save(jobAdvertIsActiveAdmin);
+		return new SuccessResult("İş ilanının admin tarafından aktifliği değiştirildi.");
 	}
 
 

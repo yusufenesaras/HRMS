@@ -140,5 +140,17 @@ public class EmployerManager implements EmployerService{
 		return new SuccessResult("Şirketin Doğrulanma durumu değiştirildi");
 	}
 
+	@Override
+	public Employer findByEmployerId(int id) {
+		return this.employerDao.getById(id);
+	}
+
+	@Override
+	public DataResult<List<Employer>> getAllByVerify() {
+		
+		return new SuccessDataResult<List<Employer>>
+		(this.employerDao.getAllByVerify());
+	}
+
 	
 }

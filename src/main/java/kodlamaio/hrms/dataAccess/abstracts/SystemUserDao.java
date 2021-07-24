@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import kodlamaio.hrms.entities.concrete.SystemUser;
+import kodlamaio.hrms.entities.concrete.User;
 import kodlamaio.hrms.entities.dtos.SystemUserDto;
 
 public interface SystemUserDao extends JpaRepository<SystemUser, Integer>{
@@ -14,5 +15,6 @@ public interface SystemUserDao extends JpaRepository<SystemUser, Integer>{
 		  		+ "(sys.id, u.id) "
 		  		+ "From User u Inner Join u.systemUser sys")
 	List<SystemUserDto> getSystemUsers();
-	 
+	SystemUser findByUserId(int id);
+
 }
